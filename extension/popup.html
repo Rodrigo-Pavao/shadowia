@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <title>ShadowIADetector</title>
+  <style>
+    :root { color-scheme: light dark; --bg: #fcfcfb; --fg: #0b0b0b; --muted: #52514e; --border: rgba(11,11,11,.12); --accent: #2a78d6; }
+    @media (prefers-color-scheme: dark) { :root { --bg: #1a1a19; --fg: #f0efec; --muted: #c3c2b7; --border: rgba(255,255,255,.12); --accent: #3987e5; } }
+    body { margin: 0; width: 320px; padding: 14px; font: 13px/1.4 system-ui, sans-serif; background: var(--bg); color: var(--fg); }
+    h1 { font-size: 15px; margin: 0 0 10px; display: flex; align-items: center; gap: 8px; }
+    label { display: block; margin: 8px 0 2px; color: var(--muted); font-size: 12px; }
+    input[type=text], input[type=password] { width: 100%; box-sizing: border-box; padding: 6px 8px; border: 1px solid var(--border); border-radius: 6px; background: transparent; color: var(--fg); font: inherit; }
+    .check { display: flex; gap: 6px; align-items: center; color: var(--fg); }
+    .row { display: flex; gap: 6px; margin-top: 12px; }
+    button { flex: 1; padding: 7px; border-radius: 6px; border: 1px solid var(--border); cursor: pointer; font: inherit; background: transparent; color: var(--fg); }
+    button.primary { background: var(--accent); color: #fff; border-color: transparent; }
+    #status { margin-top: 10px; padding: 8px; border-radius: 6px; border: 1px solid var(--border); font-size: 12px; }
+    .dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 6px; background: #898781; }
+    .ok .dot { background: #0ca30c; } .err .dot { background: #d03b3b; }
+    p.note { color: var(--muted); font-size: 11px; margin: 10px 0 0; }
+  </style>
+</head>
+<body>
+  <h1><img src="icons/icon48.png" width="20" height="20" alt="">ShadowIADetector</h1>
+  <label for="agentUrl">Endereço do agente local</label>
+  <input type="text" id="agentUrl" placeholder="http://127.0.0.1:8765">
+  <label for="token">Token (exibido no dashboard → Configurações)</label>
+  <input type="password" id="token" autocomplete="off">
+  <label class="check"><input type="checkbox" id="showWarnings"> Avisar o usuário sobre prompts de alto risco</label>
+  <div class="row">
+    <button id="save" class="primary">Salvar</button>
+    <button id="open">Abrir dashboard</button>
+  </div>
+  <div id="status"><span class="dot"></span><span id="status-text">Verificando…</span></div>
+  <p class="note">Esta extensão registra prompts, uploads e a conta usada em serviços de IA conforme a política de uso de IA da organização.</p>
+  <script src="popup.js"></script>
+</body>
+</html>
